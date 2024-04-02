@@ -8,25 +8,11 @@ import {
   UilSunset,
 } from "@iconscout/react-unicons";
 
-const TemperatureAndDetails = ({
-  weather: {
-    details,
-    icon,
-    temp,
-    temp_min,
-    temp_max,
-    sunride,
-    sunset,
-    speed,
-    humidity,
-    feels_like,
-    timezone,
-  },
-}) => {
+const TemperatureAndDetails = () => {
   return (
     <div>
       <div className="flex items-center justify-center py-6 text-xl text-cyan-300">
-        <p>{details}</p>
+        {/* <p>{details}</p> */}
       </div>
 
       <div className="flex flex-row items-center justify-between text-white py-3">

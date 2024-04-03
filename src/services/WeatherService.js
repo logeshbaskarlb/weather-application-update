@@ -1,18 +1,28 @@
 // import { DateTime } from "luxon";
 
-// const API_KEY = "a9aa4c4157fe9559405e9298ed44e742";
-// const BASE_URL = "https://api.openweathermap.org/data/2.5/";
+const API_KEY = "a9aa4c4157fe9559405e9298ed44e742";
+const BASE_URL = "https://api.openweathermap.org/data/2.5";
 
-// const getWeatherData = async (infoType, searchParams) => {
-//   const url = new URL(BASE_URL + "/" +  infoType);
-//   url.search = new URLSearchParams({ ...searchParams, appid: API_KEY });
+const getWeatherData = async (infoType, searchParams) => {
+    const url = new URL(BASE_URL + "/" + infoType);
+    url.search = new URLSearchParams({ ...searchParams, appid: API_KEY });
 
-//   return await fetch(url)
-//   .then((res) => res.json())
-//   .then((data) => data.json);
-// };
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error('Network response was not ok.');
+      }
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching weather data:', error);
+      return null;
+    }
+  };
+export default getWeatherData
 
 // const formatCurrentWeather =  (data) => {
+//   console.log(data);
 //   const {
 //     coord: { lat, lon },
 //     main: { temp, feels_like, temp_min, temp_max, humidity },
